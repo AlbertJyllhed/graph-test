@@ -1,16 +1,62 @@
-# React + Vite
+# Chart Examples
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application showcasing interactive data visualizations using Chart.js and MUI, with client-side routing and responsive design.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Bar chart built with Chart.js displaying daily passage data
+- Client-side navigation with React Router
+- MUI date picker component for month-based day selection
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** — UI framework
+- **React Router** — client-side routing
+- **Chart.js** + **react-chartjs-2** — data visualization
+- **MUI (Material UI)** — UI component library
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── components/
+│   ├── Header.jsx          # Navigation bar with router links
+│   ├── ChartJsExample.jsx  # Bar chart component
+│   └── MuiExample.jsx      # MUI date picker component
+├── App.jsx                 # Root component with routing setup
+└── App.css                 # Global styles
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the app
+
+```bash
+npm run dev
+```
+
+## Usage
+
+Navigate between the two views using the links in the header:
+
+- **Chart.js** — displays a bar chart of passages per day for the current month
+- **MUI** — displays a MUI-based calendar component
+
+## Chart Configuration
+
+The Chart.js bar chart includes the following customizations:
+
+- **No background grid** — clean look with grid lines hidden on both axes
+- **Custom title** — displayed above the chart using the Chart.js Title plugin
+- **Fixed container height** — set via a wrapping `div` with `maintainAspectRatio: false`
