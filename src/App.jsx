@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChartJsExample from "./components/ChartJsExample";
 import MuiExample from "./components/MuiExample";
+import RechartsExample from "./components/RechartsExample";
 import Header from "./components/Header";
 import "./App.css";
 
@@ -11,6 +12,17 @@ function App() {
         label: "Passages",
         data: monthDays.map(() => Math.floor(Math.random() * 100)),
     };
+
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const [isMobile, setIsMobile] = useState(mediaQuery.matches);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        const handleChange = (e) => setIsMobile(e.matches);
+
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
+    }, []);
 
     /**
      * @param {int} The month number, 0 based
@@ -40,13 +52,31 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            <ChartJsExample data={passages} days={monthDays} />
+                            <ChartJsExample
+                                data={passages}
+                                days={monthDays}
+                                isMobile={isMobile}
+                            />
                         }
                     />
                     <Route
                         path="/mui"
                         element={
-                            <MuiExample data={passages} days={monthDays} />
+                            <MuiExample
+                                data={passages}
+                                days={monthDays}
+                                isMobile={isMobile}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/recharts"
+                        element={
+                            <RechartsExample
+                                data={passages}
+                                days={monthDays}
+                                isMobile={isMobile}
+                            />
                         }
                     />
                 </Routes>

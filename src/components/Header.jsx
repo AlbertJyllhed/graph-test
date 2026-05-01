@@ -7,6 +7,7 @@ function Header() {
             <nav>
                 <NavLink to="/">Chart.Js</NavLink>
                 <NavLink to="/mui">MUI</NavLink>
+                <NavLink to="/recharts">Recharts</NavLink>
             </nav>
         </header>
     );

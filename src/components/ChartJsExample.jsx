@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -11,15 +10,7 @@ import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Title);
 
-function ChartJsExample({ data, days }) {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
+function ChartJsExample({ data, days, isMobile }) {
     const options = {
         indexAxis: isMobile ? "y" : "x",
         maintainAspectRatio: false,

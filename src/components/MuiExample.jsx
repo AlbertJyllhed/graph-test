@@ -1,26 +1,31 @@
-import { BarChart } from "@mui/x-charts/BarChart";
+import { BarChart } from "@mui/x-charts";
 
-function MuiExample({ data, days }) {
+function MuiChartExample({ data, days, isMobile }) {
     return (
         <div className="container">
             <BarChart
-                xAxis={[
-                    {
-                        id: "barDays",
-                        data: days,
-                        height: 28,
-                    },
-                ]}
+                layout={isMobile ? "horizontal" : "vertical"}
+                xAxis={
+                    isMobile
+                        ? [{ scaleType: "linear" }]
+                        : [{ scaleType: "band", data: days }]
+                }
+                yAxis={
+                    isMobile
+                        ? [{ scaleType: "band", data: days }]
+                        : [{ scaleType: "linear" }]
+                }
                 series={[
                     {
                         data: data.data,
                         label: data.label,
-                        color: "var(--primary)",
+                        color: "rgb(94, 180, 206)",
                     },
                 ]}
+                grid={{ horizontal: false, vertical: false }}
             />
         </div>
     );
 }
 
-export default MuiExample;
+export default MuiChartExample;
