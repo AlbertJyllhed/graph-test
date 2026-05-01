@@ -18,7 +18,6 @@ function MuiExample({ data, days }) {
                         color: "var(--primary)",
                     },
                 ]}
-                height={400}
             />
         </div>
     );
