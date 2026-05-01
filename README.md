@@ -55,7 +55,7 @@ Navigate between views using the links in the header:
 
 - **Chart.js** — displays a bar chart of passages per day for the current month
 - **MUI** — displays a MUI-based bar chart component
-- **Recharts** - displays a Recharts-based bar chart component
+- **Recharts** — displays a Recharts-based bar chart component
 
 The chart automatically switches between vertical (desktop) and horizontal (mobile) layout based on a `768px` breakpoint.
 
