@@ -1,6 +1,6 @@
 # Chart Examples
 
-A React application showcasing interactive data visualizations using Chart.js and MUI, with client-side routing and responsive design.
+A React application showcasing interactive data visualizations using Chart.js and MUI, with client-side routing.
 
 ## Features
 
