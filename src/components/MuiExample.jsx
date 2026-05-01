@@ -11,7 +11,6 @@ function MuiExample({ data, days }) {
                         height: 28,
                     },
                 ]}
-                localeText={{ loading: "Loading data..." }}
                 series={[
                     {
                         data: data.data,

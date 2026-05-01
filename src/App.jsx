@@ -6,10 +6,10 @@ import Header from "./components/Header";
 import "./App.css";
 
 function App() {
-    const [monthDays, setMonthDays] = useState([]);
+    const [monthDays, setMonthDays] = useState(() => getDaysInMonth(4, 2026));
     const passages = {
         label: "Passages",
-        data: [12, 45, 56, 18, 100, 19, 22, 6],
+        data: monthDays.map(() => Math.floor(Math.random() * 100)),
     };
 
     /**
@@ -31,12 +31,6 @@ function App() {
             }),
         );
     }
-
-    useEffect(() => {
-        const days = getDaysInMonth(4, 2026);
-        setMonthDays(days);
-        console.log(days);
-    }, []);
 
     return (
         <>
