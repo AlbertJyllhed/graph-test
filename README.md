@@ -8,15 +8,14 @@ A React application showcasing interactive data visualizations using Chart.js, R
 - Equivalent chart implementations in Recharts and MUI X Charts
 - Responsive layout — switches to a horizontal bar chart on mobile screens
 - Client-side navigation with React Router
-- MUI date picker component for month-based day selection
 
 ## Tech Stack
 
 - **React** — UI framework
 - **React Router** — client-side routing
 - **Chart.js** + **react-chartjs-2** — primary data visualization
-- **Recharts** — alternative chart implementation
-- **MUI (Material UI)** + **MUI X Charts** — UI component library and chart implementation
+- **Recharts** — second alternative chart implementation
+- **MUI X Charts** — third alternative chart implementation
 
 ## Project Structure
 
@@ -26,8 +25,7 @@ src/
 │   ├── Header.jsx          # Navigation bar with router links
 │   ├── ChartJsExample.jsx  # Chart.js bar chart component
 │   ├── RechartsExample.jsx # Recharts bar chart component
-│   ├── MuiChartExample.jsx # MUI X bar chart component
-│   └── MuiExample.jsx      # MUI date picker component
+│   └── MuiExample.jsx      # MUI X bar chart component
 ├── App.jsx                 # Root component with routing and shared state
 └── App.css                 # Global styles
 ```
@@ -56,7 +54,8 @@ npm run dev
 Navigate between views using the links in the header:
 
 - **Chart.js** — displays a bar chart of passages per day for the current month
-- **MUI** — displays a MUI-based calendar component
+- **MUI** — displays a MUI-based bar chart component
+- **Recharts** - displays a Recharts-based bar chart component
 
 The chart automatically switches between vertical (desktop) and horizontal (mobile) layout based on a `768px` breakpoint.
 
