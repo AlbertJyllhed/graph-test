@@ -48,7 +48,7 @@ function ChartJsExample({ data, days, isMobile }) {
     };
 
     return (
-        <div className="container">
+        <div className="container graph-container">
             <Bar
                 key={isMobile ? "horizontal" : "vertical"}
                 options={options}

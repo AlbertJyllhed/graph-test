@@ -22,7 +22,7 @@ function RechartsExample({ data, days, isMobile }) {
     }));
 
     return (
-        <div className="container">
+        <div className="container graph-container">
             <ResponsiveContainer width="100%">
                 <BarChart
                     data={chartData}

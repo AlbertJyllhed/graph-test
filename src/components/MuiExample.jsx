@@ -2,7 +2,7 @@ import { BarChart } from "@mui/x-charts";
 
 function MuiChartExample({ data, days, isMobile }) {
     return (
-        <div className="container">
+        <div className="container graph-container">
             <BarChart
                 layout={isMobile ? "horizontal" : "vertical"}
                 xAxis={
