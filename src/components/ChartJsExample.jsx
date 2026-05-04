@@ -5,13 +5,25 @@ import {
     BarElement,
     Tooltip,
     Title,
+    Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Title);
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Tooltip,
+    Title,
+    Legend,
+);
 
 function ChartJsExample({ data, days, isMobile }) {
     const options = {
+        interaction: {
+            mode: "index",
+            intersect: false,
+        },
         indexAxis: isMobile ? "y" : "x",
         maintainAspectRatio: false,
         plugins: {
@@ -28,14 +40,11 @@ function ChartJsExample({ data, days, isMobile }) {
 
     const dataset = {
         labels: days,
-        datasets: [
-            {
-                label: data.label,
-                data: data.data,
-                backgroundColor: "rgb(94, 180, 206)",
-                barPercentage: 1,
-            },
-        ],
+        datasets: data.map((series) => ({
+            label: series.label,
+            data: series.data,
+            backgroundColor: series.color,
+        })),
     };
 
     return (

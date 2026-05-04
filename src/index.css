@@ -8,6 +8,8 @@
 :root {
     --background: rgb(232, 233, 223);
     --primary: rgb(94, 180, 206);
+    --secondary: rgb(255, 128, 0);
+    --tertiary: rgb(214, 96, 214);
     --hover: rgb(94, 120, 206);
     --shadow: rgba(0, 0, 0, 0.2);
 }

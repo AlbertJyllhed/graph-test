@@ -1,17 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChartJsExample from "./components/ChartJsExample";
 import MuiExample from "./components/MuiExample";
 import RechartsExample from "./components/RechartsExample";
 import Header from "./components/Header";
+import DataButton from "./components/DataButton";
 import "./App.css";
 
 function App() {
     const [monthDays, setMonthDays] = useState(() => getDaysInMonth(4, 2026));
-    const passages = {
-        label: "Passages",
-        data: monthDays.map(() => Math.floor(Math.random() * 100)),
-    };
+    const [visibleCount, setVisibleCount] = useState(3);
+    const graphData = useMemo(
+        () => [
+            {
+                label: "Passages",
+                data: monthDays.map(() => Math.floor(Math.random() * 100)),
+                color: "rgb(94, 180, 206)",
+            },
+            {
+                label: "Wind",
+                data: monthDays.map(() => Math.floor(Math.random() * 10)),
+                color: "rgb(255, 128, 0)",
+            },
+            {
+                label: "Temperature",
+                data: monthDays.map(() => Math.floor(Math.random() * 32)),
+                color: "rgb(214, 96, 214)",
+            },
+        ],
+        [monthDays],
+    );
+    const visibleData = graphData.slice(0, visibleCount);
 
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     const [isMobile, setIsMobile] = useState(mediaQuery.matches);
@@ -44,6 +63,10 @@ function App() {
         );
     }
 
+    function handleVisibleCount(count) {
+        setVisibleCount(count);
+    }
+
     return (
         <>
             <BrowserRouter>
@@ -53,7 +76,7 @@ function App() {
                         path="/"
                         element={
                             <ChartJsExample
-                                data={passages}
+                                data={visibleData}
                                 days={monthDays}
                                 isMobile={isMobile}
                             />
@@ -63,7 +86,7 @@ function App() {
                         path="/mui"
                         element={
                             <MuiExample
-                                data={passages}
+                                data={visibleData}
                                 days={monthDays}
                                 isMobile={isMobile}
                             />
@@ -73,13 +96,17 @@ function App() {
                         path="/recharts"
                         element={
                             <RechartsExample
-                                data={passages}
+                                data={visibleData}
                                 days={monthDays}
                                 isMobile={isMobile}
                             />
                         }
                     />
                 </Routes>
+                <DataButton
+                    visibleCount={visibleCount}
+                    onCountChanged={handleVisibleCount}
+                />
             </BrowserRouter>
         </>
     );

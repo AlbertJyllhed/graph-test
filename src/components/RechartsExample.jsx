@@ -12,16 +12,22 @@ function RechartsExample({ data, days, isMobile }) {
     // Recharts expects an array of objects, one per bar
     const chartData = days.map((day, i) => ({
         day,
-        value: data.data[i],
+        ...data.reduce(
+            (acc, series) => ({
+                ...acc,
+                [series.label]: series.data[i],
+            }),
+            {},
+        ),
     }));
 
     return (
         <div className="container">
-            <p style={{ textAlign: "center" }}>{data.label}</p>
             <ResponsiveContainer width="100%">
                 <BarChart
                     data={chartData}
                     layout={isMobile ? "vertical" : "horizontal"}
+                    margin={{ top: 0, bottom: 0, left: 0, right: 0 }}
                 >
                     {isMobile ? (
                         <>
@@ -31,15 +37,18 @@ function RechartsExample({ data, days, isMobile }) {
                     ) : (
                         <>
                             <XAxis dataKey="day" />
-                            <YAxis />
+                            <YAxis width={30} />
                         </>
                     )}
                     <Tooltip />
-                    <Bar
-                        dataKey="value"
-                        name={data.label}
-                        fill="rgb(94, 180, 206)"
-                    />
+                    {data.map((series, index) => (
+                        <Bar
+                            key={index}
+                            dataKey={series.label}
+                            name={series.label}
+                            fill={series.color}
+                        />
+                    ))}
                 </BarChart>
             </ResponsiveContainer>
         </div>
