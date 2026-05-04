@@ -1,5 +1,3 @@
-import React from "react";
-
 function DataButton({ visibleCount, onCountChanged }) {
     return (
         <div className="container btn-container">

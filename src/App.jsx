@@ -48,7 +48,7 @@ function App() {
      * @param {int} The year, not zero based, required to account for leap years
      * @return {Date[]} List with date objects for each day of the month
      */
-    const getDaysInMonth = (month, year) => {
+    function getDaysInMonth(month, year) {
         const date = new Date(year, month, 1);
         const days = [];
         while (date.getMonth() === month) {
@@ -61,7 +61,7 @@ function App() {
                 day: "numeric",
             }),
         );
-    };
+    }
 
     const handleVisibleCount = (count) => {
         setVisibleCount(count);
